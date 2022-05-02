@@ -1,13 +1,18 @@
 class Bancolista:
     def __init__(self):
-        self.append.contas = [] * 100
-
-    def cadastrar(self, conta):
         self.contas = []
 
+    def cadastrar(self, conta):
+        self.contas.append(conta)
+
     def procurar_conta(self, numero):
-        achou = false
-        for
+        achou = False
+        for elemento in self.contas:
+            if elemento.get_numero() == numero:
+                achou = True
+                return elemento
+        if not achou:
+            return None
 
     def creditar(self, numero, valor):
         conta = self.procurar_conta(numero)
@@ -35,10 +40,10 @@ class Bancolista:
         conta_destino = self.procurar_conta(destino)
 
         if conta_origem and conta_destino:
-          if self.saldo(origem) >= valor:
-             conta_origem.debitar(valor)
-             conta_destino.creditar(valor)
-          else:
-             print("Saldo inexistente")
+            if self.saldo(origem) >= valor:
+                conta_origem.debitar(valor)
+                conta_destino.creditar(valor)
+            else:
+                print("Saldo inexistente")
         else:
-             print("Conta inexistente")
+            print("Conta inexistente")
